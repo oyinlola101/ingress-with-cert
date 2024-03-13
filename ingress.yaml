@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: demo1
+spec:
+  ingressClassName: nginx
+
+  rules:
+  - host: yours.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: service-a
+            port:
+              number: 80
+        path: /fine
+        pathType: Prefix
+      - backend:
+          service:
+            name: service-b
+            port:
+              number: 80
+        path: /ugly
+        pathType: Prefix
